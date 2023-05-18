@@ -8,9 +8,20 @@ public class NewPlayer : PhysicsObject
     [SerializeField] private float maxSpeed = 1;
     [SerializeField] private float jumpPower = 10;
     [SerializeField] public int coinsCollected = 0;
+    [SerializeField] public int maxHealth = 100;
     [SerializeField] public int health = 100;
-    private  Vector2 healthBarOrigSize;
+    public Vector2 healthBarOrigSize;
 
+    // Inventory 
+    public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
+
+    public Image inventoryItemImage;
+
+    public Sprite inventoryItemBlank;
+    public Sprite keySprite;
+    public Sprite keyGemSprite;
+
+    // Collectables 
     public Text coinsText;
     public Image healthBar;
 
@@ -21,6 +32,8 @@ public class NewPlayer : PhysicsObject
 
         // find health bar UI size
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;
+
+        UpdateUI();
     }
 
     // Update is called once per frame
@@ -41,9 +54,22 @@ public class NewPlayer : PhysicsObject
         // set Coins UI
         coinsText.text = coinsCollected.ToString();
 
-        // Set health UI to 100
-        // healthbar.rectTransform.sizeDelta.x /healthBarOrigSize.x;
-        healthBar.rectTransform.sizeDelta = new Vector2(100, healthBar.rectTransform.sizeDelta.y);
-        // Debug.Log(healthBar.rectTransform.sizeDelta.x /healthBarOrigSize.x);
+        // Set healthBar width to a percent of its org value
+        healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health/(float)maxHealth), healthBar.rectTransform.sizeDelta.y);
+
+    }
+
+    public void AddInventoryItem(string inventoryName, Sprite image) {
+        inventory.Add(inventoryName, image);
+
+        // Blank inventory sprite will swap to the key sprite
+        inventoryItemImage.sprite = inventory[inventoryName];
+    }
+
+    public void RemoveInventoryItem(string inventoryName) {
+        inventory.Remove(inventoryName);
+
+        // Blank inventory sprite will swap to the key sprite
+        inventoryItemImage.sprite = inventoryItemBlank;
     }
 }

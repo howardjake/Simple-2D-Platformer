@@ -93,40 +93,18 @@ ScriptedImporter:
     spritePosition: {x: 0, y: 0}
   mosaicSpriteImportData: []
   rigSpriteImportData:
-  - name: UI_0
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 21, y: 15, z: 20, w: 17}
-    rect:
-      serializedVersion: 2
-      x: 1
-      y: 2169
-      width: 1266
-      height: 42
-    spriteID: e60f1f11f1e18f644b8292988bce586c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 1, y: 2169}
-    spritePosition: {x: 0, y: 0}
-  - name: UI_1
+  - name: Inventory Key Gem
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 1
-      y: 1
-      width: 3846
-      height: 2166
-    spriteID: 8d0e4839654e7514fa2a43c052c45867
+      x: 3852
+      y: 79
+      width: 71
+      height: 71
+    spriteID: c0c353d288152a74fb755aaa5d181984
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -135,7 +113,95 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     parentGroupIndex: -1
-    uvTransform: {x: 1, y: 1}
+    uvTransform: {x: 3852, y: 79}
+    spritePosition: {x: 3411, y: 2012}
+  - name: Inventory Key
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 154
+      width: 71
+      height: 71
+    spriteID: 73b392f74bd543b4094e36256fa85133
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3852, y: 154}
+    spritePosition: {x: 3497, y: 2012}
+  - name: Health Bar
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 2172
+      width: 1260
+      height: 36
+    spriteID: 1d877ba21894266439e57a7505db190b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3, y: 2171}
+    spritePosition: {x: 90, y: 2061}
+  - name: Inventory Blank
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 4
+      width: 71
+      height: 71
+    spriteID: a2dc2dc13c7ba1a4d867cacf0fc90bd8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3851, y: 3}
+    spritePosition: {x: 3594, y: 2012}
+  - name: BG (Reference)
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 3840
+      height: 2160
+    spriteID: 770115c4a92bee14aabd26bf7a129bdb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
     spritePosition: {x: 0, y: 0}
   characterData:
     bones: []
@@ -211,6 +277,26 @@ ScriptedImporter:
   resliceFromLayer: 0
   mosaicPSDLayers: []
   rigPSDLayers:
+  - name: Inventory Key Gem
+    spriteName: Inventory Key Gem
+    isGroup: 0
+    parentIndex: -1
+    spriteID: c0c353d288152a74fb755aaa5d181984
+    layerID: 20
+    mosaicPosition: {x: 3852, y: 79}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Inventory Key
+    spriteName: Inventory Key
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 73b392f74bd543b4094e36256fa85133
+    layerID: 16
+    mosaicPosition: {x: 3852, y: 154}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
   - name: Health Bar
     spriteName: Health Bar
     isGroup: 0
@@ -218,6 +304,16 @@ ScriptedImporter:
     spriteID: 1d877ba21894266439e57a7505db190b
     layerID: 5
     mosaicPosition: {x: 4, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Inventory Blank
+    spriteName: Inventory Blank
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a2dc2dc13c7ba1a4d867cacf0fc90bd8
+    layerID: 6
+    mosaicPosition: {x: 3852, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1

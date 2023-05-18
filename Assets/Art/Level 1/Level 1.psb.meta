@@ -136,7 +136,29 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 2172}
-    spritePosition: {x: 1630, y: 790}
+    spritePosition: {x: 1706, y: 723}
+  - name: Key
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 3852
+      y: 203
+      width: 61
+      height: 67
+    spriteID: a7083938f7004334d8dbd0a6ac447742
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 3852, y: 203}
+    spritePosition: {x: 2185, y: 1431}
   - name: Coin
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -228,6 +250,16 @@ ScriptedImporter:
     spriteID: e89294175d354e747aabb5595c989abc
     layerID: 2
     mosaicPosition: {x: 4, y: 2172}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Key
+    spriteName: Key
+    isGroup: 0
+    parentIndex: -1
+    spriteID: a7083938f7004334d8dbd0a6ac447742
+    layerID: 7
+    mosaicPosition: {x: 3852, y: 203}
     flatten: 0
     isImported: 1
     isVisible: 1

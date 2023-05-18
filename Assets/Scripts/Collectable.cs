@@ -5,9 +5,12 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     // variables
-    enum ItemType { Coin, Health, Ammo };
+    enum ItemType { Coin, Health, Ammo, InventoryItem };
     [SerializeField] private ItemType itemType;
     [SerializeField] NewPlayer newPlayer;
+
+    [SerializeField] private string inventoryStrName;
+    [SerializeField] private Sprite inventorySprite;
 
     // Start is called before the first frame update
     void Start()
@@ -36,25 +39,31 @@ public class Collectable : MonoBehaviour
                 // +1 Coin
                 newPlayer.coinsCollected += 1;
 
-                // Update UI
-                newPlayer.UpdateUI();
-
-                // Remove Coin
-                Destroy(gameObject);
             }
         }
         // When Health
         else if (itemType == ItemType.Health)
         {
-            Debug.Log("im health");
+            if (newPlayer.health < 100) {
+                newPlayer.health += 1;
+            }
         }
         else if (itemType == ItemType.Ammo)
         {
             Debug.Log("im ammo");
         }
+        else if (itemType == ItemType.InventoryItem)
+        {
+            newPlayer.AddInventoryItem(inventoryStrName, newPlayer.keySprite);
+        }
         else
         {
             Debug.Log("im a default inventory item");
         }
+        // Update UI
+        newPlayer.UpdateUI();
+
+        // Remove Coin
+        Destroy(gameObject);
     }
 }
