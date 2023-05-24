@@ -125,3 +125,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  inventoryStrName: Coin
+  inventorySprite: {fileID: 0}

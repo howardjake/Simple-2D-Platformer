@@ -7,7 +7,6 @@ public class Collectable : MonoBehaviour
     // variables
     enum ItemType { Coin, Health, Ammo, InventoryItem };
     [SerializeField] private ItemType itemType;
-    [SerializeField] NewPlayer newPlayer;
 
     [SerializeField] private string inventoryStrName;
     [SerializeField] private Sprite inventorySprite;
@@ -15,8 +14,7 @@ public class Collectable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Find Player Script
-        newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
+
     }
 
     // Update is called once per frame
@@ -34,18 +32,18 @@ public class Collectable : MonoBehaviour
         if (itemType == ItemType.Coin)
         {
             // When Player Touches
-            if (collison.gameObject.name == "Player")
+            if (collison.gameObject == NewPlayer.Instance.gameObject)
             {
                 // +1 Coin
-                newPlayer.coinsCollected += 1;
+                NewPlayer.Instance.coinsCollected += 1;
 
             }
         }
         // When Health
         else if (itemType == ItemType.Health)
         {
-            if (newPlayer.health < 100) {
-                newPlayer.health += 1;
+            if (NewPlayer.Instance.health < 100) {
+                NewPlayer.Instance.health += 1;
             }
         }
         else if (itemType == ItemType.Ammo)
@@ -54,14 +52,14 @@ public class Collectable : MonoBehaviour
         }
         else if (itemType == ItemType.InventoryItem)
         {
-            newPlayer.AddInventoryItem(inventoryStrName, newPlayer.keySprite);
+            NewPlayer.Instance.AddInventoryItem(inventoryStrName, NewPlayer.Instance.keySprite);
         }
         else
         {
             Debug.Log("im a default inventory item");
         }
         // Update UI
-        newPlayer.UpdateUI();
+        NewPlayer.Instance.UpdateUI();
 
         // Remove Coin
         Destroy(gameObject);

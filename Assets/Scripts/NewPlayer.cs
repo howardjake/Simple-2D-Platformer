@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class NewPlayer : PhysicsObject
@@ -11,6 +12,10 @@ public class NewPlayer : PhysicsObject
     [SerializeField] public int maxHealth = 100;
     [SerializeField] public int health = 100;
     public Vector2 healthBarOrigSize;
+    
+    [SerializeField] private GameObject attackBox;
+    [SerializeField] private float attackDuration = 0.1f;
+     [SerializeField] public int attackPower = 20;
 
     // Inventory 
     public Dictionary<string, Sprite> inventory = new Dictionary<string, Sprite>();
@@ -25,15 +30,34 @@ public class NewPlayer : PhysicsObject
     public Text coinsText;
     public Image healthBar;
 
+    // Singleton 
+    private static NewPlayer instance;
+    public static NewPlayer Instance 
+    {
+        get {
+            if (instance == null) instance = GameObject.FindObjectOfType<NewPlayer>();
+            return instance;
+        }
+    }
+
+    private void Awake() {
+        if (GameObject.Find("New Player")) Destroy(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
+        gameObject.name = "New Player";
+
         coinsText = GameObject.Find("CoinsCounter").GetComponent<Text>();
 
         // find health bar UI size
         healthBarOrigSize = healthBar.rectTransform.sizeDelta;
 
         UpdateUI();
+        SetSpawnPosition();
     }
 
     // Update is called once per frame
@@ -47,8 +71,33 @@ public class NewPlayer : PhysicsObject
             velocity.y = jumpPower;
         }
 
+         // flip player localScale when moveflipped
+        if(targetVelocity.x < -.01) {
+            transform.localScale = new Vector2(-1, 1);
+        } else if (targetVelocity.x > .01) {
+            transform.localScale = new Vector2(1, 1);
         }
-// Updaet UI elements
+
+        // if press "Fire1" then set attack box to active. otherwise  set active to false
+        if(Input.GetButtonDown("Fire1")) {
+            // Start Coroutine Attack
+            StartCoroutine(ActivateAttack());
+        }
+
+        // Check player health is <= 0
+        if (health <= 0) {
+            Die();
+        }
+    }
+
+    // Activate Attack
+    public IEnumerator ActivateAttack() {
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(attackDuration);
+        attackBox.SetActive(false);
+    }
+
+    // Update UI elements
     public void UpdateUI()
     {
         // set Coins UI
@@ -57,6 +106,15 @@ public class NewPlayer : PhysicsObject
         // Set healthBar width to a percent of its org value
         healthBar.rectTransform.sizeDelta = new Vector2(healthBarOrigSize.x * ((float)health/(float)maxHealth), healthBar.rectTransform.sizeDelta.y);
 
+    }
+
+    public void SetSpawnPosition() {
+        transform.position = GameObject.Find("SpawnLocation").transform.position;
+    }
+
+    public void Die()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void AddInventoryItem(string inventoryName, Sprite image) {

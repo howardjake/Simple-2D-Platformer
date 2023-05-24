@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Gate : MonoBehaviour
 {
-    [SerializeField] private NewPlayer newPlayer;
     [SerializeField] private string requiredInventoryItemString;
 
     // Start is called before the first frame update
     void Start()
     {
-        newPlayer = GameObject.Find("Player").GetComponent<NewPlayer>();
+        
     }
 
     // Update is called once per frame
@@ -21,9 +20,9 @@ public class Gate : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collison)
     {
-        if(collison.gameObject.name == "Player") {
+        if(collison.gameObject == NewPlayer.Instance.gameObject) {
             // if Player has key then destroy 
-            if (newPlayer.inventory.ContainsKey(requiredInventoryItemString)) {
+            if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItemString)) {
                 Destroy(gameObject);
             }
         }
