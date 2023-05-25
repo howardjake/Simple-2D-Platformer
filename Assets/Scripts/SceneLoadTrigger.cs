@@ -16,12 +16,14 @@ public class SceneLoadTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject == NewPlayer.Instance.gameObject) {
-            SceneManager.LoadScene(loadSceneStr); 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject == NewPlayer.Instance.gameObject)
+        {
+            SceneManager.LoadScene(loadSceneStr);
             NewPlayer.Instance.SetSpawnPosition();
         }
     }

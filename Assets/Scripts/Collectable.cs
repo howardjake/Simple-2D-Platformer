@@ -7,7 +7,6 @@ public class Collectable : MonoBehaviour
     // variables
     enum ItemType { Coin, Health, Ammo, InventoryItem };
     [SerializeField] private ItemType itemType;
-
     [SerializeField] private string inventoryStrName;
     [SerializeField] private Sprite inventorySprite;
 
@@ -22,8 +21,6 @@ public class Collectable : MonoBehaviour
     {
 
     }
-
-
 
     // on collision 
     private void OnTriggerEnter2D(Collider2D collison)
@@ -42,7 +39,8 @@ public class Collectable : MonoBehaviour
         // When Health
         else if (itemType == ItemType.Health)
         {
-            if (NewPlayer.Instance.health < 100) {
+            if (NewPlayer.Instance.health < 100)
+            {
                 NewPlayer.Instance.health += 1;
             }
         }

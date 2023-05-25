@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class AttackBox : MonoBehaviour
 {
-    [SerializeField] private int attackPower = 20;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.GetComponent<Enemy>()) {
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.GetComponent<Enemy>())
+        {
             col.gameObject.GetComponent<Enemy>().health -= NewPlayer.Instance.attackPower;
         }
     }

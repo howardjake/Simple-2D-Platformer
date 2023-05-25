@@ -23,6 +23,7 @@ public class Gate : MonoBehaviour
         if(collison.gameObject == NewPlayer.Instance.gameObject) {
             // if Player has key then destroy 
             if (NewPlayer.Instance.inventory.ContainsKey(requiredInventoryItemString)) {
+                NewPlayer.Instance.RemoveInventoryItem(requiredInventoryItemString);
                 Destroy(gameObject);
             }
         }
